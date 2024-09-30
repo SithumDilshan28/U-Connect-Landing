@@ -22,17 +22,18 @@ const HeaderSidebarMenu = ({
         <div className="attr-nav flex">
           <ul>
             <li>
-              <ReactWOW delay="500ms" duration="400ms">
-                <div className="button fadeInUp">
-                  <Link
-                    className="btn btn-md btn-gradient animation"
-                    to="/login"
-                    style={{ padding: "10px 30px" }}
-                  >
-                    Login
-                  </Link>
-                </div>
-              </ReactWOW>
+            <ReactWOW delay="500ms" duration="400ms">
+  <div className="button fadeInUp">
+    <a
+      className="btn btn-md btn-gradient animation"
+      href="http://localhost:5173/auth/login"
+      style={{ padding: "10px 30px" }}
+    >
+      Login
+    </a>
+  </div>
+</ReactWOW>
+
             </li>
             <li className="side-menu">
               <Link to={void 0} onClick={addClasses}>

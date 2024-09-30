@@ -1,13 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { HashLink as Link } from "react-router-hash-link";
 import SocialShare from "../others/SocialShare";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const FooterV1 = () => {
+  const [email, setEmail] = useState(""); // State to store the email
+
   const handleSearch = (event) => {
     event.preventDefault();
-    event.target.reset();
-    toast.success("Thanks for your Email");
+
+    const emailData = {
+      email: event.target.email.value, // Get the email input value
+    };
+
+    axios
+      .post("http://localhost:8070/email/addEmail", emailData)
+      .then((response) => {
+        event.target.reset(); // Reset the form after successful submission
+        setEmail("");
+        toast.success("Thanks for subscribing!"); // Show success message
+      })
+      .catch((error) => {
+        toast.error("Failed to submit email. Please try again."); // Show error message
+      });
   };
 
   return (
@@ -57,7 +73,6 @@ const FooterV1 = () => {
                     <li>
                       <Link to="/services-details/#">Services</Link>
                     </li>
-
                     <li>
                       <Link to="/contact-us#">Contact Us</Link>
                     </li>
@@ -108,6 +123,8 @@ const FooterV1 = () => {
                       name="email"
                       autoComplete="off"
                       required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)} // Update email state on input change
                     />
                     <button type="submit">
                       <i className="fas fa-arrow-right"></i>

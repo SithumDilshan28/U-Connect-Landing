@@ -30,7 +30,7 @@ const SinglePriceV1 = ({ price }) => {
             <i className="flaticon-cleaning-6"></i>
             <h4>{planName}</h4>
             <h2>
-              <sup>$</sup>
+              <sup>LKR</sup>
               {planPrice} <sub>/{planType}</sub>
             </h2>
             <p>{planText}</p>
